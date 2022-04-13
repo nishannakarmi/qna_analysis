@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-e&d20q3_of)5jikd9000@=b6m@q0!2@16x1#u2vzv6bd5lm1**
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,7 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
+
     'polls.apps.PollsConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -74,10 +78,21 @@ WSGI_APPLICATION = 'qna_analysis.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'qna',
+        'USER': 'localhost_admin',
+        'PASSWORD': 'nishan123',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 

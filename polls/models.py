@@ -11,11 +11,14 @@ class Question(models.Model):
 
 
 class Choice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name="question_choices")
     choice_text = models.CharField(max_length=200)
     correct_choice = models.BooleanField(default=False)
 
     def __str__(self):
+        if self.correct_choice:
+            return f"{self.choice_text} - correct"
+
         return self.choice_text
 
 
