@@ -7,6 +7,18 @@
 - Change the database related settings in the settings.py file
 - Run the command, `python manage.py migrate` to apply database table changes
 - Run the development server as `python manage.py runserver`
+- Create a superuser to access django admin console as, `python manage.py createsuperuser`
+- Optional, Create a new user through django admin console
 
 ## List of available APIs,
-- api/qna
+- api/qna:
+  - Methods: GET/POST
+    - GET
+      - param:
+        - next_question: [int]/optional
+    - POST
+      - param:
+        - user: [int]/optional
+        - question: [int] (Question ID)
+        - answer: [int] (choice ID)
+        

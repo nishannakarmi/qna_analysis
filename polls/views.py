@@ -40,10 +40,9 @@ class QuestionAnswerSession(APIView):
         return self._next_question(request, next_qn)
 
     def post(self, request):
-        next_qn = int(request.data.get("question", 0)) + 1
-
         serializer = UserAttemptSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
+            next_qn = int(serializer.data.get("question", 0)) + 1
             return self._next_question(None, next_qn)
         return Response({"status": "error"}, status=status.HTTP_400_BAD_REQUEST)
